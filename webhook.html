@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0505">
+<title>📡 مرسل الديسكورد — FALCON BROTHERHOOD</title>
+<link rel="icon" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cairo:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css?v=2">
+<style>
+.dc-preview{background:#313338;border:1px solid #2c2c32;border-radius:8px;padding:16px;margin-top:14px;color:#dbdee1}
+.dc-msg{display:flex;gap:12px}
+.dc-av{width:44px;height:44px;border-radius:50%;background:#000;border:2px solid var(--red);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;overflow:hidden}
+.dc-body{flex:1;min-width:0}
+.dc-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.dc-name{color:#fff;font-weight:800}
+.dc-bot{background:#5865F2;color:#fff;font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px}
+.dc-time{font-size:11px;color:#949ba4}
+.dc-text{margin-top:4px;line-height:1.9;white-space:pre-wrap;word-break:break-word}
+.dc-text .ping{background:rgba(88,101,242,.3);color:#c9cdfb;padding:0 4px;border-radius:3px;font-weight:700}
+.dc-embed{background:#2b2d31;border-radius:6px;border-right:4px solid var(--red);padding:12px 14px;margin-top:6px;max-width:480px}
+.dc-embed.gold{border-right-color:#c9a86a}
+.dc-embed.blue{border-right-color:#5865F2}
+.dc-et{color:#fff;font-weight:800;margin-bottom:4px}
+.dc-ed{line-height:1.9;white-space:pre-wrap}
+.dc-ef{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.dc-ef div{min-width:120px}
+.dc-ef b{display:block;color:#fff;font-size:12px}
+.dc-ef span{font-size:13px}
+.dc-foot{font-size:11px;color:#949ba4;margin-top:8px}
+.style-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.style-opt{border:1px solid #2c2c32;background:#000;border-radius:8px;padding:10px;cursor:pointer;font-size:13px;text-align:center}
+.style-opt.on{border-color:var(--red);background:rgba(232,0,0,.08)}
+.style-opt .bar{height:6px;border-radius:99px;margin-bottom:6px}
+.tpls{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.char-n{font-size:12px;color:#777;text-align:left}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div id="toasts"></div>
+<div class="strip">📡 FALCON DISCORD SENDER — للإدارة فقط</div>
+<nav><div class="nav-inner">
+<a class="brand" href="index.html"><img src="logo.png" alt="" onerror="this.outerHTML='<div class=brand-fb>🦅</div>'"><span><b>FALC<span>ON</span></b><small>DISCORD SENDER</small></span></a>
+<div class="links" style="display:flex"><a href="index.html">🌐 الموقع</a>
+<a href="index.html#market">🛒 السوق</a>
+<a href="news.html">📰 البيانات</a>
+<a href="rules.html">📜 القوانين</a>
+<a href="admin.html">🛡️ اللوحة</a>
+<span id="whAuth"></span>
+</div>
+</div></nav>
+
+<div class="wrap" style="padding:30px 20px 80px;position:relative;z-index:2">
+<span class="tag">📡 مرسل الديسكورد</span>
+<h2 class="st">اختار <span>شكل الإعلان</span> جوه الديسكورد</h2>
+<p class="sub">4 أشكال مختلفة — دوس على أي شكل وشوف معاينته الحية زي الديسكورد بالظبط قبل ما تبعت.</p>
+
+<div id="lockBox" class="lock card" style="margin-top:24px;text-align:center;padding:60px 20px;display:none">
+<div style="font-size:64px">🔒</div>
+<h3>للإدارة فقط (قائد 🎖️ أو أعلى)</h3>
+<p class="sub" style="margin:6px auto">سجل دخول من لوحة التحكم الأول.</p>
+<a href="admin.html" class="btn btn-red btn-sm">روح لوحة التحكم 🛡️</a>
+</div>
+
+<div id="senderBox" style="display:none">
+<div class="grid2">
+<form class="box" id="whForm">
+<h3>✍️ اكتب الإعلان</h3>
+<div><label>يتبعت على</label><select id="w_hook"><option value="news">📢 ويب هوك الأخبار والإعلانات</option><option value="support">💰 ويب هوك الدعم المادي</option></select></div>
+<div><label>🎨 شكل الرسالة جوه الديسكورد</label>
+<div class="style-grid">
+<div class="style-opt on" data-s="plain" onclick="pickStyle('plain',this)"><div class="bar" style="background:#949ba4"></div>📝 عادية<br><small class="hint">نص + منشن</small></div>
+<div class="style-opt" data-s="falcon" onclick="pickStyle('falcon',this)"><div class="bar" style="background:var(--red)"></div>🦅 إمبيد الصقر<br><small class="hint">أحمر مهيب</small></div>
+<div class="style-opt" data-s="gold" onclick="pickStyle('gold',this)"><div class="bar" style="background:var(--bronze)"></div>👑 إمبيد ملكي<br><small class="hint">دهبي فخم</small></div>
+<div class="style-opt" data-s="market" onclick="pickStyle('market',this)"><div class="bar" style="background:#5865F2"></div>📢 إمبيد إعلان<br><small class="hint">بحقول مرتبة</small></div>
+</div></div>
+<div><label>العنوان (يظهر كبير في الإمبيد)</label><input id="w_title" placeholder="مثال: نداء حرب — الكل يجهز ⚔️"></div>
+<div><label>نص الإعلان * <span class="hint">(**عريض** شغال)</span></label><textarea id="w_msg" rows="5" required placeholder="اكتب إعلانك هنا..."></textarea><div class="char-n"><span id="w_count">0</span>/2000</div></div>
+<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="w_ping" style="width:auto" checked> 📣 ابدأ الرسالة بمنشن <b dir="ltr">@everyone</b></label>
+<button class="btn btn-red btn-sm" style="justify-content:center" type="submit">🚀 ابعت على الديسكورد</button>
+<div id="sendRes" class="hint"></div>
+<div class="tpls">
+<button type="button" class="btn-ghost btn-sm" onclick="tpl(0)">⚔️ نداء حرب</button>
+<button type="button" class="btn-ghost btn-sm" onclick="tpl(1)">📋 اجتماع طارئ</button>
+<button type="button" class="btn-ghost btn-sm" onclick="tpl(2)">🎉 فعالية</button>
+<button type="button" class="btn-ghost btn-sm" onclick="tpl(3)">💰 تذكير بالدعم</button>
+</div>
+</form>
+<div>
+<div class="card"><h3>👁️ المعاينة الحية — <span id="pvName" style="color:var(--bronze)">رسالة عادية</span></h3>
+<div class="dc-preview"><div class="dc-msg">
+<div class="dc-av">🦅</div>
+<div class="dc-body"><div class="dc-head"><span class="dc-name">FALCON BROTHERHOOD</span><span class="dc-bot">✓ BOT</span><span class="dc-time" id="dcTime">اليوم</span></div>
+<div class="dc-text" id="dcText"><span class="hint">اختار شكل واكتب حاجة...</span></div></div>
+</div></div>
+</div>
+<div class="card" style="margin-top:14px"><h3>🔗 الويب هوكات المربوطة</h3>
+<div class="stat-row"><span>📢 الأخبار</span><b class="hint" id="whNews">...</b></div>
+<div class="stat-row"><span>💰 الدعم</span><b class="hint" id="whSup">...</b></div>
+<div class="hint" style="margin-top:8px">التعديل من اللوحة → الإعدادات. لو رسالة اترفضت، دوس 🧪 تجربة من هناك.</div></div>
+</div>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="wrap">
+<div class="en" style="font-size:24px;letter-spacing:3px">FALC<span style="color:var(--red)">O</span>N BROTHERHOOD</div>
+<div style="color:#777;font-size:14px;margin-top:6px">FEAR THE SKY — Los Santos • FiveM RP</div>
+<div class="socials">
+<a class="invite-link" href="https://discord.gg/YbHbuY2QBx" target="_blank"><i class="fa-brands fa-discord"></i></a>
+<a href="index.html"><i class="fa-solid fa-house"></i></a>
+<a href="news.html"><i class="fa-solid fa-newspaper"></i></a>
+<a href="support.html"><i class="fa-solid fa-hand-holding-dollar"></i></a>
+</div>
+<div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:13px;margin-bottom:14px"><a href="index.html" style="color:#999">الرئيسية</a><a href="index.html#market" style="color:#999">السوق</a><a href="news.html" style="color:#999">البيانات</a><a href="rules.html" style="color:#999">القوانين</a><a href="support.html" style="color:#999">الدعم</a><a href="admin.html" style="color:#999">الإدارة</a></div>
+<div style="color:#555;font-size:13px">© 2026 FALCON BROTHERHOOD — اللي يسرق اسمنا هنزوره في بيته 😈</div>
+</div>
+</footer>
+<script>
+const $=s=>document.querySelector(s);
+const DB={get(k,f){try{const v=JSON.parse(localStorage.getItem(k));return v??f}catch{return f}},set(k,v){localStorage.setItem(k,JSON.stringify(v))}};
+const NEWS_WH='https://discord.com/api/webhooks/1557726226922340412/E2xEDeyPAuCgs2QYNfUoS_3b3eb9nbTtoKIp_hTDbPzCDhru9U1Ozgln5mrdG-6hhTnt';
+const SUPPORT_WH='https://discord.com/api/webhooks/1557726874803765338/XzgBjl1fTeOGqU_3CbJb5wmAEiu8zzIgHznG4wjr7Gfn8h_hO7V2WYaZwpKWygfx-nQ6';
+function cfg(){return Object.assign({webhook:NEWS_WH,supportWebhook:SUPPORT_WH,ping:true},DB.get('fb_config',{}))}
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(m,t=''){const d=document.createElement('div');d.className='toast '+t;d.textContent=m;$('#toasts').appendChild(d);setTimeout(()=>d.remove(),3200)}
+let STYLE='plain',ME='';
+const TPLS=[
+['نداء حرب — الكل يجهز ⚔️','الحرب بدأت! الكل يلبس ويدخل المدينة دلوقتي.\n📍 التجمع: HQ\n🔫 سلاحك + درعك معاك'],
+['اجتماع طارئ للعصابة 📋','اجتماع مهم بعد شوية — الحضور إجباري.\n📍 المكان: HQ\n⏰ المعاد: هيتحدد في الشات'],
+['فعالية جديدة 🎉','فعالية النهاردة والجوايز كبيرة 🏆\nالتفاصيل في الشات — الكل مدعو!'],
+['تذكير: صندوق العصابة محتاجكم 💰','ادعموا الخزينة بأي مبلغ من صفحة الدعم في الموقع 👑\nكل دولار بيقوّي العش!']];
+function tpl(i){$('#w_title').value=TPLS[i][0];$('#w_msg').value=TPLS[i][1];preview()}
+function pickStyle(s,el){STYLE=s;document.querySelectorAll('.style-opt').forEach(o=>o.classList.remove('on'));el.classList.add('on');preview()}
+function md(t){return esc(t).replace(/\*\*(.+?)\*\*/g,'<b style="color:#fff">$1</b>').replace(/@everyone/g,'<span class="ping">@everyone</span>')}
+const STYLES={plain:'رسالة عادية 📝',falcon:'إمبيد الصقر 🦅',gold:'إمبيد ملكي 👑',market:'إمبيد إعلان 📢'};
+const COLORS={falcon:'#e80000',gold:'#c9a86a',market:'#5865F2'};
+const ETITLES={falcon:'🦅 FALCON BROTHERHOOD',gold:'📜 مرسوم رسمي',market:'📢 إعلان من العصابة'};
+function preview(){
+ const title=$('#w_title').value.trim(),body=$('#w_msg').value.trim(),ping=$('#w_ping').checked;
+ $('#w_count').textContent=($('#w_title').value+$('#w_msg').value).length;
+ $('#pvName').textContent=STYLES[STYLE];
+ $('#dcTime').textContent='اليوم في '+new Date().toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'});
+ let h='';
+ if(ping)h+=md('@everyone')+'\n';
+ if(STYLE==='plain'){
+  h+=(title?md('**'+title+'**')+'\n':'')+(body?md(body):'<span class="hint">اختار شكل واكتب حاجة...</span>');
+ }else{
+  const cls=STYLE==='gold'?'gold':(STYLE==='market'?'blue':'');
+  h+=`<div class="dc-embed ${cls}"><div class="dc-et" style="color:${COLORS[STYLE]}">${esc(ETITLES[STYLE])}</div>`
+   +(title?`<div class="dc-ed"><b style="color:#fff">${esc(title)}</b></div>`:'')
+   +(body?`<div class="dc-ed">${md(body)}</div>`:'<div class="dc-ed hint">اكتب نص الإعلان...</div>');
+  if(STYLE==='market')h+=`<div class="dc-ef"><div><b>👤 بواسطة</b><span>${esc(ME||'الإدارة')}</span></div><div><b>📅 التاريخ</b><span>${new Date().toLocaleDateString('ar-EG')}</span></div></div>`;
+  h+=`<div class="dc-foot">FALCON BROTHERHOOD • القيادة العليا 🦅</div></div>`;
+ }
+ $('#dcText').innerHTML=h;
+}
+function buildPayload(){
+ const title=$('#w_title').value.trim(),body=$('#w_msg').value.trim(),ping=$('#w_ping').checked;
+ const content=ping?'@everyone':'';
+ if(STYLE==='plain')return {content:(ping?'@everyone\n':'')+(title?`**${title}**\n`:'')+body,allowed_mentions:{parse:['everyone']}};
+ const colors={falcon:15204352,gold:13230762,market:5793266};
+ const emb={title:ETITLES[STYLE]+(title?' — '+title:''),description:body||'…',color:colors[STYLE],footer:{text:'FALCON BROTHERHOOD • القيادة العليا 🦅'},timestamp:new Date().toISOString()};
+ if(STYLE==='market')emb.fields=[{name:'👤 بواسطة',value:ME||'الإدارة',inline:true},{name:'📅 التاريخ',value:new Date().toLocaleDateString('ar-EG'),inline:true}];
+ return {content:content,embeds:[emb],allowed_mentions:{parse:['everyone']}};
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ const s=DB.get('fb_session',null);
+ const users=DB.get('fb_users',[]);
+ const m=s?users.find(u=>u.name===s.name):null;
+ const admin=m&&m.rank>=7;
+ $('#senderBox').style.display='block';
+ $('#whAuth').innerHTML=m?`<span class="badge ${admin?'red':'gold'}">${admin?'🛡️ '+esc(m.name):esc(m.name)}</span>`:'';
+ ME=m?m.name:'زائر';
+ const c=cfg();
+ $('#whNews').textContent=c.webhook?('مربوط ✓ ...'+String(c.webhook).slice(-12)):'مش مربوط ✗';
+ $('#whSup').textContent=c.supportWebhook?('مربوط ✓ ...'+String(c.supportWebhook).slice(-12)):'مش مربوط ✗';
+ $('#w_ping').checked=c.ping!==false;
+ ['w_title','w_msg'].forEach(id=>$('#'+id).addEventListener('input',preview));
+ $('#w_hook').addEventListener('change',preview);
+ $('#w_ping').addEventListener('change',preview);
+ preview();
+ $('#whForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const body=$('#w_msg').value.trim();
+  if(!body){toast('اكتب نص الإعلان الأول','err');return}
+  if(body.length>2000){toast('النص أطول من 2000 حرف','err');return}
+  const url=$('#w_hook').value==='support'?(cfg().supportWebhook||SUPPORT_WH):(cfg().webhook||NEWS_WH);
+  if(!url){toast('الويب هوك مش مربوط','err');return}
+  $('#sendRes').textContent='⏳ بيتبعت...';
+  fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(buildPayload())})
+  .then(r=>{if(r.ok){$('#sendRes').textContent='✅ اتبعتت على الديسكورد — بص على الشانل';toast('اتبعتت ✓','ok')}else{$('#sendRes').textContent='';toast('الديسكورد رفضها ('+r.status+') — اتأكد من الرابط','err')}})
+  .catch(()=>{$('#sendRes').textContent='';toast('فشل الاتصال','err')});
+ });
+});
+</script>
+</body>
+</html>

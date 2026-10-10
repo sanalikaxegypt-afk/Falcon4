@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0505">
+<title>FALCON BROTHERHOOD — عصابة الصقر | FiveM</title>
+<meta name="description" content="FALCON BROTHERHOOD — منصة عصابة الفايف ام: منظمات، إعلانات، حسابات، ترقيات">
+<link rel="icon" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;600;700&family=Cairo:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+<div class="grain"></div><canvas id="embers"></canvas>
+<div id="toasts"></div>
+
+<div id="loader">
+  <div class="ld-vignette"></div>
+  <div class="ld-scan"></div>
+  <div class="ld-core">
+    <div class="ld-ring r1"></div>
+    <div class="ld-ring r2"></div>
+    <div class="ld-logo"><img src="logo.png" alt="FALCON" onerror="this.outerHTML='<div class=ld-fb>🦅</div>'"></div>
+    <div class="ld-pct en" id="pct">0%</div>
+  </div>
+  <div class="ld-title en">FALCON <span>BROTHERHOOD</span></div>
+  <div class="ld-sub">🦅 جاري دخول أرض الصقر ...</div>
+  <div class="ld-bar"><span id="loadfill"></span></div>
+  <div class="ld-step" id="loadStep">تشفير الاتصال...</div>
+  <div class="ld-tip">💡 <span id="loadTip">الولاء أو الموت — الصقر مابيرحمش.</span></div>
+  <div class="ld-skip">دوس في أي حتة للتخطي</div>
+</div>
+
+<div class="strip">⚠️ RESTRICTED AREA — انت داخل أرض الصقر — المتطفلين بيتصفّوا 🔥</div>
+
+<nav><div class="nav-inner">
+<a class="brand" href="#home"><img src="logo.png" alt="FALCON" onerror="this.outerHTML='<div class=brand-fb>🦅</div>'"><span><b>FALC<span>ON</span></b><small>BROTHERHOOD</small></span></a>
+<div class="links" id="navLinks"><a href="#home">الرئيسية</a><a href="#start">🚀 ابدأ</a><a href="#dashboard">لوحتي</a><a href="#market">🛒 السوق</a><a href="#shop">🔫 المتجر</a><a href="#orgs">المنظمات</a><a href="#ranks">الترقيات</a><a href="#board">الأبطال</a><a href="admin.html" id="adminLink" style="display:none;color:var(--red)">🛡️ لوحة التحكم</a>
+<span id="authArea" style="display:flex;gap:12px;align-items:center"></span>
+</div>
+<button class="burger" onclick="document.getElementById('navLinks').classList.toggle('mobile')"><i class="fa-solid fa-bars"></i></button>
+</div></nav>
+
+<header class="hero" id="home"><div class="hero-inner">
+<div class="emblem"><img src="logo.png" alt="FALCON BROTHERHOOD" onerror="this.outerHTML='<div class=brand-fb style=&quot;width:220px;height:220px;font-size:90px;border-radius:50%&quot;>🦅</div>'"></div>
+<div class="online" style="display:none"><span class="dot"></span> السيرفر شغال — <b id="onlineNum" style="color:#4ade80">127</b>&nbsp; روح في المدينة</div>
+<div class="brood">F I V E M — L O S S A N T O S</div>
+<h1 class="mega"><span class="out">FAL</span><span class="fill">CON</span></h1>
+<div class="brood">B R O T H E R H O O D — عصابة الصقر</div>
+<p>احنا مش عصابة عادية. احنا <b>إخوة بالدم.</b> اللي يخون بيختفي، واللي يثبت نفسه بياكل معانا. <b style="color:var(--red)">الصقر مابيرحمش 🦅</b><br>سجل حسابك، ارفع صورتك، انضم لمنظمة، وتابع إعلانات وبيانات الإدارة.</p>
+<div class="cta">
+<button class="btn btn-red" onclick="openModal('register')"><i class="fa-solid fa-fire"></i> اعمل حساب وانضم</button>
+<a href="#orgs" class="btn btn-line">استكشف المنظمات</a>
+</div>
+<div class="hstats">
+<div><b><span id="memberCount">0</span><i>+</i></b><small>مقاتل مسجل</small></div>
+<div><b><span id="orgCount">0</span></b><small>منظمة</small></div>
+<div><b><span id="newsCount">0</span></b><small>بيان رسمي</small></div>
+<div><b>24<i>/</i>7</b><small>على البلوك</small></div>
+</div>
+</div></header>
+<div class="ticker"><span>&nbsp;FEAR THE SKY ✦ الولاء أو الموت ✦ ممنوع الوشاية ✦ SOUTH LS بتاعتنا ✦ احنا مبنسألش — احنا بناخد ✦ FEAR THE SKY ✦ الولاء أو الموت ✦&nbsp;</span></div>
+
+<!-- NEWS / بيانات الإدارة -->
+
+
+<!-- DASHBOARD / PROFILE -->
+
+
+<!-- ORGS -->
+
+
+<!-- RANKS / PROMOTIONS -->
+
+
+<!-- LEADERBOARD + ADMIN -->
+
+
+<section id="start"><div class="wrap">
+<span class="tag">🚀 ابدأ منين</span>
+<h2 class="st reveal">ادخل العش في <span>3 خطوات</span></h2>
+<p class="sub reveal">من غير لف ودوران — سجل، انضم لمنظمة، اجمع XP واطلع سلم الرتب لحد الصقر.</p>
+<div class="grid3">
+<div class="card reveal"><div style="font-size:40px">📝</div><h3>1 — اعمل حسابك</h3><p>سجل في ثواني وارفع صورتك. أول حساب بيبقى الصقر الكبير 🦅</p><div style="margin-top:12px"><button class="btn-ghost btn-sm" onclick="openModal('register')">سجل دلوقتي</button></div></div>
+<div class="card reveal"><div style="font-size:40px">🏛️</div><h3>2 — انضم لمنظمة</h3><p>اختار منظمتك من القايمة — الانضمام بيديك +20 XP فوراً.</p><div style="margin-top:12px"><button class="btn-ghost btn-sm" onclick="document.getElementById('orgs').scrollIntoView({behavior:'smooth'})">شوف المنظمات</button></div></div>
+<div class="card reveal"><div style="font-size:40px">🎖️</div><h3>3 — اجمع XP واترقى</h3><p>مكافأة يومية وترقيات معتمدة من القيادة لحد رتبة الصقر.</p><div style="margin-top:12px"><button class="btn-ghost btn-sm" onclick="document.getElementById('ranks').scrollIntoView({behavior:'smooth'})">سلم الرتب</button></div></div>
+</div>
+</div></section>
+
+<section id="dashboard"><div class="wrap">
+<span class="tag">👤 لوحة المقاتل</span>
+<h2 class="st reveal">حسابك <span>وهويتك</span> في العصابة</h2>
+<p class="sub reveal">هنا صورتك، رتبتك، نقاط XP، ومنظمتك. كل حاجة بتتحفظ في متصفحك وتشتغل على Vercel مباشرة.</p>
+<div class="profile reveal" id="profileBox" style="grid-template-columns:1fr"></div>
+</div></section>
+<section id="market" style="background:rgba(10,10,15,.55);border-block:1px solid #1b1b1f"><div class="wrap">
+<span class="tag">🛒 سوق العصابة</span>
+<h2 class="st reveal">إعلانات <span>السوق السودا</span></h2>
+<p class="sub reveal">بيع واشتري وتجنيد وخدمات — النشر من الإدارة فقط، والتعامل بالتنسيق على الديسكورد. (<b id="adCount">0</b> إعلان)</p>
+<div class="filters reveal"><button class="on" onclick="setFilter('الكل',this)">الكل</button><button onclick="setFilter('سيارات',this)">سيارات</button><button onclick="setFilter('أسلحة',this)">أسلحة</button><button onclick="setFilter('تجنيد',this)">تجنيد</button><button onclick="setFilter('خدمات',this)">خدمات</button><button onclick="setFilter('عقارات',this)">عقارات</button><button onclick="setFilter('أخرى',this)">أخرى</button></div>
+<div class="grid3 reveal" id="adsList"></div>
+</div></section>
+
+<section id="shop" style="background:rgba(10,10,15,.55);border-block:1px solid #1b1b1f"><div class="wrap">
+<span class="tag">🔫 متجر العصابة</span>
+<h2 class="st reveal">تسليح <span>من السوق السودا</span></h2>
+<p class="sub reveal">الدفع بالفلوس الغير شرعية 💸 فقط — اشتري واستلم سلاحك من HQ. (<b id="shopCount">0</b> منتج)</p>
+<div class="grid3 reveal" id="shopList"></div>
+<div class="card reveal" style="margin-top:16px"><h3>🧾 مشترياتي</h3><div id="myOrders"></div><div class="hint">بعد الشراء بيتحجز طلبك، والاستلام من HQ بالتنسيق مع الإدارة.</div></div>
+</div></section>
+
+<section id="orgs" style="background:rgba(10,10,15,.55);border-block:1px solid #1b1b1f"><div class="wrap">
+<span class="tag">🏛️ نظام المنظمات</span>
+<h2 class="st reveal">المنظمات <span>والعصابات الحليفة</span></h2>
+<p class="sub reveal">اختار منظمتك وانضم ليها وكبر معاها — الانضمام بيديك +20 XP.</p>
+<div style="margin-top:28px">
+<div class="reveal card"><h3>📜 قانون المنظمات</h3>
+<p>1️⃣ أول حساب بيتسجل بيبقى <b style="color:#fff">الصقر الكبير (Founder)</b> تلقائياً.<br>
+2️⃣ اختار منظمتك من القايمة وانضم ليها فوراً.<br>
+3️⃣ الانضمام لمنظمة بيديك <b style="color:var(--bronze)">+20 XP</b>.<br>
+4️⃣ منظمة FALCON BROTHERHOOD هي الأم — قوتها 97%.</p>
+<div class="meta">💡 الصور والأعضاء محفوظة في جهازك (localStorage) — مناسبة لسيرفر RP متوسط بدون سيرفر خارجي.</div>
+</div>
+</div>
+<div class="grid3 reveal" id="orgList"></div>
+</div></section>
+<section id="ranks" style="background:rgba(10,10,15,.55);border-block:1px solid #1b1b1f"><div class="wrap">
+<span class="tag">🎖️ نظام الترقيات</span>
+<h2 class="st reveal">اطلع السلم <span>من مستجد لصقر</span></h2>
+<p class="sub reveal">اجمع XP من المكافأة اليومية والانضمام للمنظمات — 11 رتبة من مستجد لصقر، كل رتبة بتخصصها. اطلب ترقية لما توصل للحد، والقادة يوافقوا من لوحة التحكم.</p>
+<div class="ranks reveal" id="ranksGrid"></div>
+<div class="grid2" style="margin-top:20px">
+<form class="box reveal" id="promoForm">
+<h3>⬆️ طلب ترقية</h3>
+<div><label>ليه تستاهل الترقية؟ *</label><textarea id="p_reason" rows="3" required placeholder="احكيلنا عملت ايه للعصابة..."></textarea></div>
+<button class="btn btn-red btn-sm" style="justify-content:center" type="submit">ابعت الطلب للقادة 🚀</button>
+<div class="hint">كل رتبة ليها حد XP مكتوب فوق — الترقية المقبولة = +50 XP هدية 🎁</div>
+</form>
+<div class="card reveal"><h3>📋 أحدث طلبات الترقية</h3><div id="promoList"></div><div id="approveBox"></div><div class="hint" style="margin-top:10px">🔒 الموافقة على الطلبات من <a href="admin.html" style="color:var(--red)">لوحة التحكم (إدارة فقط)</a></div></div>
+</div>
+</div></section>
+<section id="news" style="background:rgba(10,10,15,.55);border-bottom:1px solid #1b1b1f"><div class="wrap">
+<span class="tag">📰 أخبار الصقر</span>
+<h2 class="st reveal">بيانات <span>الإدارة الرسمية</span></h2>
+<p class="sub reveal">كل الأخبار والقرارات بتنزل هنا من لوحة التحكم الخاصة بالإدارة فقط.</p>
+<div class="grid3 reveal" id="newsList" style="margin-top:20px"></div>
+<div class="reveal" style="text-align:center;margin-top:20px"><a href="news.html" class="btn btn-red btn-sm">📋 عرض صفحة البيانات كاملة</a></div>
+</div></section>
+<section id="board"><div class="wrap">
+<span class="tag">🏆 المميزات الإضافية</span>
+<h2 class="st reveal">لوحة الشرف <span>والإدارة</span></h2>
+<p class="sub reveal">أعلى المقاتلين XP، إعدادات الديسكورد Webhook، ولوحة تحكم كاملة للقادة.</p>
+<div class="grid2">
+<div class="card reveal"><h3>🥇 توب المقاتلين (Top XP)</h3><div id="boardList" style="margin-top:12px"></div>
+<div class="meta">🎁 خد مكافأتك اليومية من لوحتك فوق عشان تسبق الكل.</div></div>
+<div class="card reveal"><h3>💬 اربط سيرفرك</h3>
+<p>كل التقديمات وطلبات الترقية ممكن توصلك إشعار تلقائي على الديسكورد عن طريق Webhook (القائد يحط الرابط من لوحة الإدارة).</p>
+<div class="stat-row"><span><i class="fa-brands fa-discord"></i> الديسكورد</span><a class="invite-link" href="https://discord.gg/YbHbuY2QBx" target="_blank"><b style="color:var(--bronze)">ادخل العش 🦅</b></a></div>
+<div class="stat-row"><span>🖥️ سيرفر FiveM</span><b dir="ltr" id="serverIpTxt">connect YOUR-SERVER-IP</b></div>
+<div class="stat-row"><span>🟢 الحالة</span><b style="color:#4ade80">شغال 24/7</b></div>
+</div>
+</div>
+<div class="card reveal" id="adminBox" style="margin-top:16px;text-align:center"></div>
+<div class="cta-band reveal" style="max-width:1240px;margin:26px auto 0;background:linear-gradient(90deg,#5c0000,var(--red),#5c0000);padding:46px 26px;text-align:center;clip-path:polygon(24px 0,100% 0,calc(100% - 24px) 100%,0 100%)">
+<h2 class="en" style="font-size:clamp(26px,5vw,50px)">DISCORD IS OPEN — ENTER IF YOU DARE</h2>
+<p style="color:#ffd7d7">التقديمات والاجتماعات ونداءات الحرب — كلها من الديسكورد.</p>
+<a class="invite-link" href="https://discord.gg/YbHbuY2QBx" target="_blank" style="display:inline-block;margin-top:16px;background:#000;color:#fff;font-family:'Anton';letter-spacing:2px;padding:14px 40px">ENTER THE NEST 🦅</a>
+</div>
+</div></section>
+<section id="pages"><div class="wrap">
+<span class="tag">🧭 أقسام الموقع</span>
+<h2 class="st reveal">كل حاجة <span>في مكانها</span></h2>
+<p class="sub reveal">الصفحات الرسمية للعصابة — البيانات والقوانين والدعم ولوحة القيادة.</p>
+<div class="grid4">
+<a href="news.html" class="card reveal"><div style="font-size:38px">📰</div><h3>البيانات الرسمية</h3><p>مراسيم وقرارات القيادة العليا.</p></a>
+<a href="rules.html" class="card reveal"><div style="font-size:38px">📜</div><h3>دستور العصابة</h3><p>القوانين السارية على الكل.</p></a>
+<a href="support.html" class="card reveal"><div style="font-size:38px">💰</div><h3>صندوق الدعم</h3><p>ادعم الخزينة وخلّد اسمك.</p></a>
+<a href="admin.html" class="card reveal"><div style="font-size:38px">🛡️</div><h3>لوحة التحكم</h3><p>غرفة عمليات القيادة.</p></a>
+</div>
+</div></section>
+
+<footer>
+<div class="wrap">
+<div class="en" style="font-size:26px;letter-spacing:3px">FALC<span style="color:var(--red)">O</span>N BROTHERHOOD</div>
+<div style="color:#777;font-size:14px;margin-top:6px">FEAR THE SKY — Los Santos • FiveM RP</div>
+<div class="socials">
+<a class="invite-link" href="https://discord.gg/YbHbuY2QBx" target="_blank"><i class="fa-brands fa-discord"></i></a>
+<a href="#"><i class="fa-brands fa-tiktok"></i></a>
+<a href="#"><i class="fa-brands fa-youtube"></i></a>
+<a href="#"><i class="fa-brands fa-instagram"></i></a>
+</div>
+<div style="color:#555;font-size:13px">© 2026 FALCON BROTHERHOOD — اللي يسرق اسمنا هنزوره في بيته 😈</div>
+</div>
+</footer>
+<a class="float-dc invite-link" href="https://discord.gg/YbHbuY2QBx" target="_blank"><i class="fa-brands fa-discord"></i></a>
+<div id="hud"><span>💵 <b id="hudCash">0</b></span><span class="hud-sep">|</span><span>💸 <b id="hudDirty">0</b></span></div>
+
+<!-- WELCOME / رسالة الترحيب بالموسيقى -->
+<div id="welcomeOverlay">
+  <div class="welcome-card">
+    <button class="welcome-x" onclick="closeWelcome()">✕</button>
+    <div class="w-emblem" id="wEmblem">🦅</div>
+    <div class="w-kicker">FALCON BROTHERHOOD • WELCOME TO THE NEST</div>
+    <h2 id="wTitle">نورت العش يا وحش 🔥</h2>
+    <div id="wRank" style="margin:10px 0"></div>
+    <p id="wMsg"></p>
+    <div class="w-eq" id="wEq"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="w-music-hint">🎵 النشيد الرسمي للصقر شغال دلوقتي</div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px">
+      <button class="btn btn-red btn-sm" onclick="closeWelcome()">ادخل العش 🔥</button>
+      <button class="btn-ghost btn-sm" id="wMuteBtn" onclick="toggleWelcomeMusic()">🔇 كتم الموسيقى</button>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="modal" id="authModal"><div class="modal-box auth-new">
+<button class="modal-x" onclick="closeModal()">✕</button>
+<div class="auth-side">
+<div class="auth-emblem"><img src="logo.png" alt="FALCON" onerror="this.outerHTML='<div class=brand-fb style=&quot;width:92px;height:92px;font-size:40px;border-radius:50%&quot;>🦅</div>'"></div>
+<div class="en" style="font-size:24px;letter-spacing:4px">FALCON</div>
+<div class="auth-side-sub">BROTHERHOOD — عصابة الصقر</div>
+<div class="auth-side-line"></div>
+<p>الولاء أو الموت 🦅<br>حساب واحد يدخلك العش كله.</p>
+<div class="auth-badges"><span>🎖️ رتب</span><span>🏛️ منظمات</span><span>🎁 مكافآت</span></div>
+</div>
+<div class="auth-main">
+<h3>🦅 ادخل العش</h3><div class="hint">حسابك بيتحفظ على جهازك ويفضل شغال على Vercel</div>
+<div class="tabs"><button data-tab="login" class="on" onclick="switchTab('login')">دخول</button><button data-tab="register" onclick="switchTab('register')">حساب جديد</button></div>
+<form id="loginForm" class="box" style="border:0;padding:0;background:none">
+<div><label>اسم المستخدم</label><div class="fld"><span>👤</span><input id="l_user" required placeholder="اكتب اسمك"></div></div>
+<div><label>الباسورد</label><div class="fld"><span>🔑</span><input id="l_pass" type="password" required placeholder="••••••"></div></div>
+<button class="btn btn-red btn-sm" style="justify-content:center;width:100%" type="submit">دخول 🔥</button>
+</form>
+<form id="regForm" class="box" style="border:0;padding:0;background:none;display:none">
+<div class="avatar-picker"><img id="r_preview" src="logo.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'"><div><label>📷 صورة الحساب — عادية أو GIF متحرك</label><input type="file" id="r_avatar" accept="image/*"><div class="hint">أقل من 100MB — الصور العادية بتتصغر، والـ GIF بيفضل يتحرك زي ما هو</div></div></div>
+<div class="r2"><div><label>اسم المستخدم *</label><div class="fld"><span>👤</span><input id="r_user" required placeholder="Falcon_Eagle"></div></div>
+<div><label>الباسورد *</label><div class="fld"><span>🔑</span><input id="r_pass" type="password" required placeholder="••••••"></div></div></div>
+<div class="r2"><div><label>اسمك داخل اللعبة (IC)</label><div class="fld"><span>🎮</span><input id="r_ic" placeholder="Adam Falcon"></div></div>
+<div><label>الديسكورد</label><div class="fld"><span>💬</span><input id="r_dc" dir="ltr" placeholder="falcon_01"></div></div></div>
+<button class="btn btn-red btn-sm" style="justify-content:center;width:100%" type="submit">إنشاء الحساب 🦅</button>
+<div class="hint">⚠️ أول حساب بيتسجل بيبقى المؤسس (الصقر 🦅) — وأول 3 حسابات معاهم صلاحيات إدارة 🛡️</div>
+</form>
+</div>
+</div></div>
+<script src="app.js?v=2"></script>
+</body>
+</html>

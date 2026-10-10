@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0505">
+<title>قوانين الصقر 📜 — FALCON BROTHERHOOD</title>
+<meta name="description" content="دستور وقوانين عصابة FALCON BROTHERHOOD — اللي يخالف بيتحاسب">
+<link rel="icon" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cairo:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css?v=2">
+<style>
+.rule-hero{position:relative;z-index:2;text-align:center;padding:60px 20px 30px;background:linear-gradient(rgba(0,0,0,.65),rgba(8,8,10,.97)),url('https://k.top4top.io/p_3933u21fo1.jpg') center/cover}
+.rule-hero h1{font-size:clamp(32px,6vw,60px);font-weight:800}
+.rule-hero h1 span{color:var(--bronze)}
+.rule-card{position:relative;background:linear-gradient(180deg,#151318,#0c0b0d);border:1px solid #2c2c32;border-top:4px solid var(--bronze);padding:22px;overflow:hidden}
+.rule-card:hover{border-color:var(--bronze);transform:translateY(-4px);transition:.25s}
+.rule-card::after{content:'§';position:absolute;bottom:-24px;left:6px;font-family:'Anton';font-size:100px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.05);pointer-events:none}
+.rule-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.rule-num{font-family:'Anton';letter-spacing:2px;color:var(--bronze);font-size:15px}
+.rule-title{font-size:21px;font-weight:800;margin:12px 0 4px}
+.rule-body{color:#cfd2d8;line-height:2.1;font-size:15px;white-space:pre-wrap}
+.rule-foot{margin-top:12px;display:flex;justify-content:space-between;align-items:center}
+.back-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:24px}
+</style>
+</head>
+<body>
+<div class="grain"></div><canvas id="embers"></canvas>
+<div id="toasts"></div>
+<div class="strip">📜 دستور الصقر — اللي يخالف القانون بيتحاسب — بدون استثناء</div>
+<nav><div class="nav-inner">
+<a class="brand" href="index.html"><img src="logo.png" alt="" onerror="this.outerHTML='<div class=brand-fb>🦅</div>'"><span><b>FALC<span>ON</span></b><small>BROTHERHOOD</small></span></a>
+<div class="links" style="display:flex"><a href="index.html">🌐 الرئيسية</a>
+<a href="index.html#market">🛒 السوق</a>
+<a href="news.html">📰 البيانات</a>
+<a href="rules.html" class="active" style="color:var(--bronze)">📜 القوانين</a>
+<a href="support.html">💰 الدعم</a>
+<a href="admin.html">🛡️ الإدارة</a>
+</div>
+</div></nav>
+
+<header class="rule-hero">
+<div class="emblem" style="width:130px;height:130px;margin:0 auto 10px"><img src="logo.png" alt="" onerror="this.outerHTML='<div class=brand-fb style=&quot;width:130px;height:130px;font-size:60px;border-radius:50%&quot;>🦅</div>'"></div>
+<span class="tag">📜 دستور العصابة</span>
+<h1>قوانين <span>الصقر</span></h1>
+<p class="sub" style="margin:8px auto 0">اقرا كويس قبل ما تطلب الانضمام — الجهل بالقانون مش عذر، والعقوبة واحدة على الكل.</p>
+</header>
+
+<div class="wrap" style="padding:10px 20px 90px;position:relative;z-index:2">
+<div class="back-row">
+<div class="hint" id="rulesCount"></div>
+<div style="display:flex;gap:8px">
+<a href="index.html" class="btn-ghost btn-sm">⬅ رجوع للرئيسية</a>
+<a href="admin.html" class="btn-ghost btn-sm" id="pubBtn" style="display:none">📜 إضافة قانون (إدارة)</a>
+</div>
+</div>
+<div class="grid2" id="allRules" style="margin-top:16px"></div>
+</div>
+
+<footer>
+<div class="wrap">
+<div class="en" style="font-size:24px;letter-spacing:3px">FALC<span style="color:var(--red)">O</span>N BROTHERHOOD</div>
+<div style="color:#777;font-size:14px;margin-top:6px">FEAR THE SKY — Los Santos • FiveM RP</div>
+<div class="socials">
+<a class="invite-link" href="https://discord.gg/YbHbuY2QBx" target="_blank"><i class="fa-brands fa-discord"></i></a>
+<a href="index.html"><i class="fa-solid fa-house"></i></a>
+<a href="news.html"><i class="fa-solid fa-newspaper"></i></a>
+<a href="support.html"><i class="fa-solid fa-hand-holding-dollar"></i></a>
+</div>
+<div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:13px;margin-bottom:14px"><a href="index.html" style="color:#999">الرئيسية</a><a href="index.html#market" style="color:#999">السوق</a><a href="news.html" style="color:#999">البيانات</a><a href="rules.html" style="color:#999">القوانين</a><a href="support.html" style="color:#999">الدعم</a><a href="admin.html" style="color:#999">الإدارة</a></div>
+<div style="color:#555;font-size:13px">© 2026 FALCON BROTHERHOOD — اللي يسرق اسمنا هنزوره في بيته 😈</div>
+</div>
+</footer>
+
+
+<script>
+const $=s=>document.querySelector(s);
+const DB={get(k,f){try{const v=JSON.parse(localStorage.getItem(k));return v??f}catch{return f}},set(k,v){localStorage.setItem(k,JSON.stringify(v))}};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function defaultRules(){const t=new Date().toISOString();return [
+ {id:'r1',title:'تسليم الأموال غير الشرعية',cat:'مالية',body:'يجب تسليم جميع الأرباح والأموال غير الشرعية الناتجة عن أي سرقة داخل مقاطعة ريدج إلى العصابة، مع الالتزام الكامل بنظام العصابة وتعليمات القيادة في إدارة هذه الأموال.',date:t},
+ {id:'r2',title:'الخروج من القصر',cat:'عام',body:'يُمنع خروج أي عضو من القصر بمفرده — يجب أن يكون برفقته زميل واحد على الأقل (أو اثنان أو ثلاثة) لتوفير الحماية اللازمة من العصابات الأخرى.',date:t},
+ {id:'r3',title:'التدريبات اليومية',cat:'تدريب',body:'على كل عضو (جديد أو قديم) الالتزام بالتدريب اليومي من نصف ساعة لساعة على سيرفرات تدريب خارجية، لتحسين سرعة الاستجابة ودقة التصويب (Aim).',date:t},
+ {id:'r4',title:'الاستحواذات والتأهيل',cat:'قتال',body:'هدفنا المركز الأول. يُمنع الأعضاء الجدد أو ضعاف التصويب من المشاركة في الاستحواذات — المشاركة فقط لمن أتم التدريبات (مسدس، شوتجان، AK) وأثبت كفاءته حسب مستواه داخل ريدج.',date:t},
+ {id:'r5',title:'توفير الأموال غير الشرعية للأعضاء',cat:'مالية',body:'يلتزم رئيس العصابة بتوفير مبلغ يومي بين 200,000 و300,000 من الأموال غير الشرعية لكل عضو: لشراء الأسلحة لمن لا يستطيع، ودعم الأعضاء الجدد، وضمان جاهزية العصابة للمنافسة.',date:t},
+ {id:'r6',title:'الالتزام بتوفير أدوات التدريب',cat:'تدريب',body:'على جميع الأعضاء توفير أدوات التدريب المطلوبة في أقصر وقت ممكن، والالتزام بالتجهيزات واللوازم اللازمة لضمان استمرار التدريب وتحسين مستوى الأداء.',date:t},
+ {id:'r7',title:'الاستعداد للبطولات',cat:'بطولات',body:'البطولات الدورية بين العصابات تحتاج: بدء الاستعداد قبلها بيومين على الأقل، تكثيف التدريبات ورفع الجاهزية، الالتزام بتعليمات القادة والتدرب الجماعي، وبذل أقصى جهد للفوز بالمركز الأول.',date:t},
+ {id:'r8',title:'الاستقالة من العصابة',cat:'عام',body:'من يقدم استقالته تُفرض عليه غرامة 200,000 من الأموال الشرعية، وتُسحب الأسلحة التي وفّرها له رئيس العصابة — حتى لو تلفت — وفق نظام العصابة المعتمد.',date:t}
+]}
+
+(function(){
+ if(!DB.get('fb_rulesv2',0)){const cur=DB.get('fb_rules',[]);if(!cur.length||cur.every(x=>['r1','r2','r3','r4','r5'].includes(x.id)))DB.set('fb_rules',defaultRules());DB.set('fb_rulesv2',1)}
+ const rules=DB.get('fb_rules',[]);
+ const s=DB.get('fb_session',null);
+ const users=DB.get('fb_users',[]);
+ const admin=s&&users.some(u=>u.name===s.name&&u.rank>=7);
+ if(admin)$('#pubBtn').style.display='';
+ $('#rulesCount').textContent=rules.length?`📋 ${rules.length} ${rules.length===1?'قانون':'قوانين'} سارية`:'';
+ const dFmt=d=>{try{return new Date(d).toLocaleDateString('ar-EG',{year:'numeric',month:'long',day:'numeric'})}catch{return ''}};
+ $('#allRules').innerHTML=rules.map((n,i)=>`<div class="rule-card">
+  <div class="rule-top"><span class="rule-num">LAW #${i+1}</span><span class="badge gold">${esc(n.cat||'عام')}</span></div>
+  <div class="rule-title">📜 ${esc(n.title)}</div>
+  <div class="rule-body">${esc(n.body)}</div>
+  <div class="rule-foot"><span class="hint">📅 ${dFmt(n.date)}</span><span class="hint">🦅 معتمد من القيادة</span></div></div>`).join('')||`<div class="empty">مفيش قوانين لسه<br><br><a href="admin.html" class="btn-ghost btn-sm">دخول لوحة الإدارة 🛡️</a></div>`;
+ const cv=$('#embers');
+ if(cv){const ctx=cv.getContext('2d');let W,H;const rs=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight};rs();addEventListener('resize',rs);
+ const ps=Array.from({length:50},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:Math.random()*2+.5,v:Math.random()*.8+.2,o:Math.random()*.7+.2}));
+ (function loop(){ctx.clearRect(0,0,W,H);ps.forEach(a=>{a.y-=a.v;if(a.y<0){a.y=H;a.x=Math.random()*W}ctx.beginPath();ctx.arc(a.x,a.y,a.s,0,7);ctx.fillStyle=`rgba(201,168,106,${a.o*.6})`;ctx.fill()});requestAnimationFrame(loop)})();}
+})();
+</script>
+</body>
+</html>

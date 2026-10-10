@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0505">
+<title>لوحة التحكم — FALCON BROTHERHOOD 🛡️</title>
+<link rel="icon" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cairo:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css?v=2">
+<style>
+.admin-layout{display:grid;grid-template-columns:250px 1fr;gap:16px;margin-top:24px;align-items:start}
+.sidebar{background:#101014;border:1px solid #2c2c32;padding:14px;position:sticky;top:90px}
+.sidebar button{display:flex;gap:10px;align-items:center;width:100%;background:none;border:0;color:#bbb;padding:12px 14px;font-family:'Cairo';font-weight:800;font-size:14px;cursor:pointer;border-radius:8px;text-align:right}
+.sidebar button:hover{background:#1a1a1e;color:#fff}
+.sidebar button.on{background:var(--red);color:#fff}
+.sidebar .cnt{margin-right:auto;background:#000;border:1px solid #333;font-size:11px;padding:2px 9px;border-radius:99px}
+.stat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.stat{background:linear-gradient(180deg,#17171b,#0c0c0e);border:1px solid #2c2c32;padding:18px;text-align:center}
+.stat b{font-family:'Anton';font-size:34px;display:block}
+.stat small{color:var(--mut);font-size:12px}
+.tab{display:none}.tab.on{display:block}
+.lock{text-align:center;padding:70px 20px}
+.lock .big{font-size:70px}
+@media(max-width:900px){.admin-layout{grid-template-columns:1fr}.sidebar{position:static}.stat-cards{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div id="toasts"></div>
+<div class="strip">🛡️ FALCON CONTROL ROOM — للإدارة فقط — ممنوع الدخول لغير القادة</div>
+<nav><div class="nav-inner">
+<a class="brand" href="index.html"><img src="logo.png" alt="" onerror="this.outerHTML='<div class=brand-fb>🦅</div>'"><span><b>FALC<span>ON</span></b><small>CONTROL PANEL</small></span></a>
+<div class="links" style="display:flex"><a href="index.html">🌐 الرئيسية</a>
+<a href="index.html#market">🛒 السوق</a>
+<a href="news.html">📰 البيانات</a>
+<a href="rules.html">📜 القوانين</a>
+<a href="support.html">💰 الدعم</a>
+<span id="adminAuth"></span>
+</div>
+</div></nav>
+
+<div class="wrap" style="padding:30px 20px 80px;position:relative;z-index:2">
+<span class="tag">🛡️ لوحة التحكم</span>
+<h2 class="st">غرفة عمليات <span>الصقر</span></h2>
+<p class="sub">النشر وإدارة كل حاجة من هنا فقط — الأعضاء العاديين يشوفوا بس، مايقدروش ينشروا.</p>
+
+<!-- شاشة القفل لغير الإدارة -->
+<div id="lockScreen" class="lock card" style="margin-top:24px">
+<div class="big">🔒</div>
+<h3 style="margin:12px 0">المنطقة دي للإدارة فقط</h3>
+<p class="sub" style="margin:0 auto">سجل دخول بحساب قائد (رتبة قائد ⭐ أو أعلى) عشان تفتح اللوحة.<br>أول حساب = المؤسس 🦅 — وأول 3 حسابات معاهم صلاحيات إدارة 🛡️</p>
+<div id="lockInfo"></div>
+<form id="adminLogin" class="box" style="max-width:400px;margin:20px auto 0">
+<div><label>اسم المستخدم (الإدارة)</label><input id="al_user" required placeholder="اسم حساب القائد"></div>
+<div><label>الباسورد</label><input id="al_pass" type="password" required placeholder="••••••"></div>
+<button class="btn btn-red btn-sm" style="justify-content:center" type="submit">فتح اللوحة 🔓</button>
+</form>
+</div>
+
+<!-- اللوحة -->
+<div id="panel" style="display:block">
+<div class="stat-cards" style="margin-top:24px">
+<div class="stat"><b id="s_users" style="color:#fff">0</b><small>👥 الأعضاء</small></div>
+<div class="stat"><b id="s_orgs" style="color:var(--bronze)">0</b><small>🏛️ المنظمات</small></div>
+<div class="stat"><b id="s_ads" style="color:var(--red)">0</b><small>📢 الإعلانات</small></div>
+<div class="stat"><b id="s_pend" style="color:#4ade80">0</b><small>⏳ ترقيات معلقة</small></div>
+</div>
+
+<div class="admin-layout">
+<div class="sidebar">
+<button data-t="t_publish" data-min="7" class="on" onclick="tab('t_publish',this)"><i class="fa-solid fa-bullhorn"></i> نشر إعلان <span class="cnt">7+</span></button>
+<button data-t="t_news" data-min="7" onclick="tab('t_news',this)"><i class="fa-solid fa-newspaper"></i> نشر خبر / بيان</button>
+<button data-t="t_rules" data-min="7" onclick="tab('t_rules',this)"><i class="fa-solid fa-scale-balanced"></i> القوانين</button>
+<button data-t="t_shop" data-min="7" onclick="tab('t_shop',this)"><i class="fa-solid fa-gun"></i> المتجر</button>
+<button data-t="t_ads" data-min="7" onclick="tab('t_ads',this)"><i class="fa-solid fa-list"></i> كل الإعلانات</button>
+<button data-t="t_promos" data-min="7" onclick="tab('t_promos',this)"><i class="fa-solid fa-medal"></i> طلبات الترقية <span class="cnt" id="c_pend">0</span></button>
+<button data-t="t_donate" data-min="7" onclick="tab('t_donate',this)"><i class="fa-solid fa-hand-holding-dollar"></i> الدعم المادي</button>
+<a href="webhook.html" style="display:flex;gap:10px;align-items:center;width:100%;padding:12px 14px;font-weight:800;font-size:14px;border-radius:8px;color:var(--bronze)"><i class="fa-solid fa-satellite-dish"></i> 📡 مرسل الديسكورد</a>
+<button data-t="t_ranks" data-min="7" onclick="tab('t_ranks',this)"><i class="fa-solid fa-ranking-star"></i> سلم الرتب</button>
+<button data-t="t_members" data-min="8" onclick="tab('t_members',this)"><i class="fa-solid fa-users"></i> الأعضاء والتعيين <span class="cnt">8+</span></button>
+<button data-t="t_orgs" data-min="9" onclick="tab('t_orgs',this)"><i class="fa-solid fa-warehouse"></i> المنظمات <span class="cnt">9+</span></button>
+<button data-t="t_xp" data-min="9" onclick="tab('t_xp',this)"><i class="fa-solid fa-star"></i> نظام XP <span class="cnt">9+</span></button>
+<button data-t="t_money" data-min="8" onclick="tab('t_money',this)"><i class="fa-solid fa-money-bill-wave"></i> الأموال HUD <span class="cnt">8+</span></button>
+<button data-t="t_cfg" data-min="9" onclick="tab('t_cfg',this)"><i class="fa-solid fa-gear"></i> الإعدادات <span class="cnt">9+</span></button>
+<button onclick="logoutA()" style="color:#ff9090"><i class="fa-solid fa-right-from-bracket"></i> خروج</button>
+</div>
+
+<div>
+<!-- نشر إعلان -->
+<div class="tab on" id="t_publish">
+<form class="box" id="pubForm">
+<h3>📢 نشر إعلان جديد <span class="badge red">إدارة فقط</span></h3>
+<div><label>عنوان الإعلان *</label><input id="p_title" required placeholder="مثال: بيع سيارة مصفحة"></div>
+<div class="r2">
+<div><label>القسم</label><select id="p_cat"><option>سيارات</option><option>أسلحة</option><option>تجنيد</option><option>خدمات</option><option>عقارات</option><option>أخرى</option></select></div>
+<div><label>السعر</label><input id="p_price" placeholder="$ 50,000"></div>
+</div>
+<div><label>التفاصيل *</label><textarea id="p_desc" rows="4" required placeholder="التفاصيل وطريقة التواصل..."></textarea></div>
+<div><label>صورة (اختياري)</label><input type="file" id="p_img" accept="image/*"></div>
+<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="p_pin" style="width:auto"> 📌 تثبيت الإعلان في الأول</label>
+<button class="btn btn-red btn-sm" style="justify-content:center" type="submit">نشر الآن 🚀</button>
+</form>
+</div>
+
+<!-- أخبار -->
+<div class="tab" id="t_news">
+<form class="box" id="newsForm">
+<h3>📰 نشر خبر / بيان رسمي <span class="badge gold">يظهر في الرئيسية</span></h3>
+<div><label>عنوان الخبر *</label><input id="n_title" required placeholder="مثال: فزنا بحرب الجنوب 🔥"></div>
+<div><label>نص البيان *</label><textarea id="n_body" rows="4" required placeholder="اكتب البيان..."></textarea></div>
+<div><label>📷 صورة مع المنشور (اختياري)</label><input type="file" id="n_img" accept="image/*"><div class="hint">أقل من 100MB — بتتصغر تلقائياً وبتظهر في الرئيسية وصفحة البيانات</div><img id="n_preview" style="display:none;max-width:100%;border:1px solid #2c2c32;margin-top:8px;max-height:180px;object-fit:cover"></div>
+<button class="btn btn-red btn-sm" style="justify-content:center" type="submit">نشر البيان 📣</button>
+</form>
+<div id="newsListA" style="margin-top:14px"></div>
+</div>
+
+<!-- كل الإعلانات -->
+<!-- القوانين -->
+<div class="tab" id="t_rules">
+<form class="box" id="ruleForm">
+<h3>📜 إضافة قانون جديد <span class="badge gold">يظهر في صفحة القوانين</span></h3>
+<div><label>عنوان القانون *</label><input id="r_title" required placeholder="مثال: ممنوع الوشاية"></div>
+<div><label>القسم</label><select id="r_cat"><option>عام</option><option>قتال</option><option>رتب</option><option>مالية</option><option>تدريب</option><option>بطولات</option><option>اجتماعات</option></select></div>
+<div><label>نص القانون *</label><textarea id="r_body" rows="3" required placeholder="اكتب تفاصيل القانون والعقوبة..."></textarea></div>
+<button class="btn btn-red btn-sm" style="justify-content:center" type="submit">نشر القانون 📣</button>
+</form>
+<div class="card" style="margin-top:14px"><h3>📋 القوانين الحالية (<span id="rulesN">0</span>)</h3><div id="ruleListA"></div></div>
+</div>
+
+<div class="tab" id="t_shop">
+<form class="box" id="shopForm">
+<h3>🔫 نشر منتج جديد <span class="badge gold">الدفع فلوس غير شرعية 💸</span></h3>
+<div class="r2"><div><label>اسم المنتج *</label><input id="sp_title" required placeholder="مثال: AK-47"></div>
+<div><label>السعر (فلوس غير شرعية $) *</label><input id="sp_price" type="number" min="1" dir="ltr"></div></div>
+<div class="r2"><div><label>القسم</label><select id="sp_cat"><option>أسلحة</option><option>دروع</option><option>ذخيرة</option><option>أخرى</option></select></div>
+</div>
+<div><label>الوصف</label><textarea id="sp_desc" rows="2" placeholder="مواصفات المنتج..."></textarea></div>
+<div><label>📷 صورة المنتج * (اجبارية — بتظهر في المتجر)</label><input type="file" id="sp_img" accept="image/*" required><img id="sp_preview" style="display:none;max-width:100%;max-height:160px;object-fit:cover;border:1px solid #2c2c32;margin-top:8px"></div>
+<button class="btn btn-red btn-sm" style="justify-content:center" type="submit">نشر المنتج 🚀</button>
+</form>
+<div class="card" style="margin-top:14px"><h3>📦 المنتجات (<span id="prodN">0</span>)</h3><div id="prodListA"></div></div>
+<div class="card" style="margin-top:14px"><h3>🧾 سجل المبيعات (<span id="ordN">0</span>) — إجمالي: <b style="color:var(--bronze)">$<span id="ordTotal">0</span></b></h3><div id="ordListA"></div></div>
+</div>
+
+<div class="tab" id="t_ads"><div class="card"><h3>📋 كل الإعلانات (<span id="adsN">0</span>)</h3><div id="adsListA"></div></div></div>
+
+<!-- ترقيات -->
+<div class="tab" id="t_promos"><div class="card"><h3>🎖️ طلبات الترقية</h3><div id="promoListA"></div></div></div>
+
+<!-- الدعم المادي -->
+<div class="tab" id="t_donate"><div class="card"><h3>💰 الدعم المادي</h3><div class="hint">أكّد الدعومات الحقيقية عشان تنزل في حائط الداعمين + صاحب الحساب ياخد 20 XP.</div><div id="donListA" style="margin-top:12px"></div></div></div>
+
+<!-- الرتب -->
+<div class="tab" id="t_ranks"><div class="card"><h3>🎖️ سلم الرتب (11 رتبة)</h3><div class="hint">التعيين من تبويب «الأعضاء والتعيين» بقايمة منسدلة — كل رتبة بتخصصها وصلاحياتها.</div><div style="overflow:auto"><table class="tbl"><thead><tr><th>LVL</th><th>الرتبة</th><th>المطلوب</th><th>التخصص / الصلاحية</th></tr></thead><tbody id="ranksTable"></tbody></table></div></div></div>
+
+<!-- أعضاء -->
+<div class="tab" id="t_members"><div class="card"><h3>👥 إدارة الأعضاء والتعيين <span class="badge red">8+ حارس العش</span></h3><div class="hint">اختار الرتبة من القايمة المنسدلة — ومحدش يقدر يعيّن رتبة زيه أو أعلى منه. أول حساب (المؤسس) مايتحذفش.</div><div style="overflow:auto"><table class="tbl"><thead><tr><th>العضو</th><th>الرتبة (تعيين)</th><th>التخصص</th><th>XP</th><th>الاموال</th><th>إجراء</th></tr></thead><tbody id="memTable"></tbody></table></div></div></div>
+
+<!-- منظمات -->
+<div class="tab" id="t_orgs">
+<div class="card"><h3>🏛️ المنظمات الحالية</h3><div class="hint">عرض المنظمات الموجودة وحذفها — مفيش تأسيس منظمات جديدة.</div><div id="orgListA" style="margin-top:14px"></div></div>
+</div>
+
+<!-- إعدادات -->
+<div class="tab" id="t_xp">
+<form class="box" id="xpForm">
+<h3>⭐ التحكم في نظام XP <span class="badge gold">9+ الجناح الأيمن</span></h3>
+<div class="hint">كل الأرقام دي بتتطبق فوراً على الموقع — التسجيل والدخول والانضمام والترقيات والدعم والمكافآت اليومية.</div>
+<div class="r2">
+<div><label>🎁 XP التسجيل الجديد (مستجد)</label><input id="x_reg" type="number" min="0" dir="ltr"></div>
+<div><label>🛡️ XP أول 3 حسابات (إدارة)</label><input id="x_regVip" type="number" min="0" dir="ltr"></div>
+</div>
+<div class="r2">
+<div><label>🦅 XP المؤسس (أول حساب)</label><input id="x_regFounder" type="number" min="0" dir="ltr"></div>
+<div><label>🔑 XP تسجيل الدخول</label><input id="x_login" type="number" min="0" dir="ltr"></div>
+</div>
+<div class="r2">
+<div><label>🏛️ XP الانضمام لمنظمة</label><input id="x_join" type="number" min="0" dir="ltr"></div>
+<div><label>⬆️ XP الترقية المقبولة</label><input id="x_promo" type="number" min="0" dir="ltr"></div>
+</div>
+<div class="r2">
+<div><label>💰 XP تأكيد الدعم</label><input id="x_support" type="number" min="0" dir="ltr"></div>
+<div><label>⏳ انتظار المكافأة اليومية (ثواني)</label><input id="x_cd" type="number" min="5" dir="ltr"></div>
+</div>
+<div><label>🎁 المكافأة اليومية لكل رتبة (XP)</label></div>
+<div class="r2">
+<div><label>🩸 مستجد LVL 1</label><input id="d_1" type="number" min="0" dir="ltr"></div>
+<div><label>🤜 مقاتل LVL 2</label><input id="d_2" type="number" min="0" dir="ltr"></div>
+</div>
+<div class="r2">
+<div><label>🔫 جندي LVL 3</label><input id="d_3" type="number" min="0" dir="ltr"></div>
+<div><label>🎯 قناص LVL 4</label><input id="d_4" type="number" min="0" dir="ltr"></div>
+</div>
+<div class="r2">
+<div><label>🗡️ ظل LVL 5</label><input id="d_5" type="number" min="0" dir="ltr"></div>
+<div><label>💰 تاجر LVL 6</label><input id="d_6" type="number" min="0" dir="ltr"></div>
+</div>
+<div class="r2">
+<div><label>🎖️ قائد LVL 7</label><input id="d_7" type="number" min="0" dir="ltr"></div>
+<div><label>🛡️ حارس العش LVL 8</label><input id="d_8" type="number" min="0" dir="ltr"></div>
+</div>
+<div class="r2">
+<div><label>⚔️ الجناح الأيمن LVL 9</label><input id="d_9" type="number" min="0" dir="ltr"></div>
+<div><label>🦅 الصقر LVL 10</label><input id="d_10" type="number" min="0" dir="ltr"></div>
+</div>
+<button class="btn btn-red btn-sm" style="justify-content:center" type="submit">حفظ نظام XP 💾</button>
+</form>
+</div>
+
+<div class="tab" id="t_money">
+<div class="card"><h3>💰 التحكم في HUD والأموال <span class="badge gold">8+ حارس العش</span></h3><div class="hint">إظهار وإخفاء شريط الفلوس، الرصيد الابتدائي للحسابات الجديدة، وإضافة سريعة لأي حساب.</div>
+<form class="box" id="moneyForm" style="margin-top:12px">
+<h3>⚙️ إعدادات الـ HUD</h3>
+<label style="display:flex;gap:8px;align-items:center;background:#000;border:1px solid #2c2c32;padding:12px 14px;border-radius:6px"><input type="checkbox" id="m_hud" style="width:auto"> 👁️ إظهار شريط الفلوس (HUD) للأعضاء</label>
+<div class="r2"><div><label>💵 الرصيد الابتدائي شرعي (حساب جديد)</label><input id="m_startCash" type="number" min="0" dir="ltr"></div>
+<div><label>💸 الرصيد الابتدائي غير شرعي</label><input id="m_startDirty" type="number" min="0" dir="ltr"></div></div>
+<button class="btn btn-red btn-sm" style="justify-content:center" type="submit">حفظ الإعدادات 💾</button>
+</form>
+<form class="box" id="moneyQuick" style="margin-top:14px">
+<h3>⚡ إضافة سريعة لأي حساب</h3>
+<div><label>العضو</label><select id="mq_user"></select></div>
+<div class="r2"><div><label>النوع</label><select id="mq_type"><option value="cash">💵 فلوس شرعية</option><option value="dirty">💸 فلوس غير شرعية</option></select></div>
+<div><label>المبلغ (سالب للخصم)</label><input id="mq_amount" type="number" dir="ltr" placeholder="1000"></div></div>
+<button class="btn btn-red btn-sm" style="justify-content:center" type="submit">تنفيذ ✅</button>
+</form>
+<div style="margin-top:14px"><button type="button" class="btn-ghost btn-sm" onclick="resetAllMoney()">🗑️ تصفير أموال كل الأعضاء</button></div>
+</div>
+</div>
+
+<div class="tab" id="t_cfg">
+<form class="box" id="cfgForm">
+<h3>⚙️ إعدادات الموقع</h3>
+<div><label>📢 Webhook الأخبار والإعلانات (إشعارات النشر والترقيات)</label><input id="c_webhook" dir="ltr" placeholder="https://discord.com/api/webhooks/..."></div>
+<div><label>💰 Webhook الدعم المادي (إشعارات التبرعات)</label><input id="c_support" dir="ltr" placeholder="https://discord.com/api/webhooks/..."></div>
+<div><label>🔑 Webhook الدخول والأعضاء الجدد (تسجيل + دخول + ترقيات)</label><input id="c_auth" dir="ltr" placeholder="https://discord.com/api/webhooks/..."></div>
+<div><label>رابط دعوة الديسكورد</label><input id="c_invite" dir="ltr"></div>
+<div class="r2"><div><label>🎯 هدف صندوق الدعم ($)</label><input id="c_goal" type="number" min="100" dir="ltr"></div>
+<div><label>🏦 حساب العصابة البنكي (داخل اللعبة)</label><input id="c_bank" dir="ltr" placeholder="FLCN-001"></div></div>
+<div><label>⏳ مدة الانتظار بين الدعم والتاني (ساعات)</label><input id="c_cd" type="number" min="1" dir="ltr" placeholder="5"></div>
+<div><label>IP السيرفر</label><input id="c_ip" dir="ltr"></div>
+<label style="display:flex;gap:8px;align-items:center;background:#000;border:1px solid #2c2c32;padding:12px 14px;border-radius:6px"><input type="checkbox" id="c_promo" style="width:auto"> 🎖️ فتح باب <b>طلبات الترقية</b> للأعضاء (شيل العلامة عشان تقفله)</label>
+<label style="display:flex;gap:8px;align-items:center;background:#000;border:1px solid #2c2c32;padding:12px 14px;border-radius:6px"><input type="checkbox" id="c_ping" style="width:auto"> 📣 منشن <b dir="ltr">@everyone</b> مع كل إشعار ديسكورد</label>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<div><label>شكل الاعلان جوه الديسكورد</label><select id="c_style"><option value="embed">بطاقة مميزة (صورة + عنوان + لون)</option><option value="text">نص عادي</option></select></div>
+<div><label>لون بطاقة الديسكورد</label><input id="c_color" type="color" value="#e80000" dir="ltr"></div>
+<button type="button" class="btn-ghost btn-sm" onclick="testWH('news')">🧪 تجربة ويب هوك الأخبار</button>
+<button type="button" class="btn-ghost btn-sm" onclick="testWH('support')">🧪 تجربة ويب هوك الدعم</button>
+</div>
+<button class="btn btn-red btn-sm" style="justify-content:center" type="submit">حفظ الإعدادات 💾</button>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+<button type="button" class="btn-ghost btn-sm" onclick="if(confirm('تمسح كل الإعلانات؟')){DB.set('fb_ads',[]);renderA();toast('اتمسحت','ok')}">🗑️ مسح كل الإعلانات</button>
+<button type="button" class="btn-ghost btn-sm" onclick="if(confirm('تمسح كل الأخبار؟')){DB.set('fb_news',[]);renderA();toast('اتمسحت','ok')}">🗑️ مسح الأخبار</button>
+</div>
+<div style="margin-top:16px;background:rgba(232,0,0,.06);border:1px solid var(--red);padding:16px;border-radius:8px">
+<h3 style="color:#ff9090">☢️ منطقة الخطر — للمؤسس فقط</h3>
+<p class="hint">تصفير الداتا بيمسح كل حاجة نهائياً: الأعضاء والحسابات والإعلانات والمنظمات والأخبار والترقيات — ويرجع الموقع زي أول يوم.</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+<button type="button" class="btn-ghost btn-sm" onclick="backupData()">💾 تحميل نسخة احتياطية</button>
+<button type="button" class="btn-ghost btn-sm" onclick="document.getElementById('restoreFile').click()">📥 استعادة نسخة</button>
+<input type="file" id="restoreFile" accept="application/json,.json" hidden>
+</div>
+<div class="hint">💡 النسخة بتنقل حسابك وكل الداتا لأي متصفح أو جهاز تاني — حملها من المتصفح اللي سجلت عليه واستعيدها هنا.</div>
+<button type="button" class="btn btn-red btn-sm" style="margin-top:10px" onclick="resetData()">☢️ تصفير الداتا كلها</button>
+</div>
+</form>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="wrap">
+<div class="en" style="font-size:24px;letter-spacing:3px">FALC<span style="color:var(--red)">O</span>N BROTHERHOOD</div>
+<div style="color:#777;font-size:14px;margin-top:6px">FEAR THE SKY — Los Santos • FiveM RP</div>
+<div class="socials">
+<a class="invite-link" href="https://discord.gg/YbHbuY2QBx" target="_blank"><i class="fa-brands fa-discord"></i></a>
+<a href="index.html"><i class="fa-solid fa-house"></i></a>
+<a href="news.html"><i class="fa-solid fa-newspaper"></i></a>
+<a href="support.html"><i class="fa-solid fa-hand-holding-dollar"></i></a>
+</div>
+<div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:13px;margin-bottom:14px"><a href="index.html" style="color:#999">الرئيسية</a><a href="index.html#market" style="color:#999">السوق</a><a href="news.html" style="color:#999">البيانات</a><a href="rules.html" style="color:#999">القوانين</a><a href="support.html" style="color:#999">الدعم</a><a href="admin.html" style="color:#999">الإدارة</a></div>
+<div style="color:#555;font-size:13px">© 2026 FALCON BROTHERHOOD — اللي يسرق اسمنا هنزوره في بيته 😈</div>
+</div>
+</footer>
+<script src="admin.js?v=2"></script>
+</body>
+</html>

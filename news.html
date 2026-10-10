@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0505">
+<title>بيانات الصقر الرسمية 📰 — FALCON BROTHERHOOD</title>
+<meta name="description" content="كل البيانات والأخبار الرسمية لإدارة FALCON BROTHERHOOD">
+<link rel="icon" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cairo:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css?v=2">
+<style>
+.news-hero{position:relative;z-index:2;text-align:center;padding:60px 20px 30px;background:linear-gradient(rgba(0,0,0,.65),rgba(8,8,10,.97)),url('https://k.top4top.io/p_3933u21fo1.jpg') center/cover}
+.news-hero h1{font-size:clamp(32px,6vw,60px);font-weight:800}
+.news-hero h1 span{color:var(--red)}
+.news-item{cursor:pointer;transition:.25s}
+.news-full{max-width:820px;margin:24px auto}
+.back-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:24px}
+/* ===== الشكل الجديد: مرسوم رسمي مختوم ===== */
+.decree{position:relative;background:linear-gradient(180deg,#151318 0%,#0c0b0d 100%);border:1px solid var(--bronze);outline:1px solid rgba(232,0,0,.45);outline-offset:6px;padding:24px;overflow:hidden}
+.decree::before{content:'';position:absolute;top:0;right:0;left:0;height:5px;background:linear-gradient(90deg,var(--red),var(--bronze),var(--red))}
+.decree::after{content:'FALCON';position:absolute;bottom:-18px;left:8px;font-family:'Anton';font-size:90px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.05);pointer-events:none}
+.decree:hover{transform:translateY(-5px);box-shadow:0 18px 50px rgba(0,0,0,.6),0 0 30px rgba(201,168,106,.12)}
+.dec-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.dec-no{font-family:'Anton';letter-spacing:2px;color:var(--bronze);font-size:14px}
+.dec-title{font-size:clamp(20px,3.5vw,30px);font-weight:800;margin:12px 0 4px;line-height:1.5}
+.dec-single .dec-title{font-size:clamp(26px,5vw,42px)}
+.dec-body{color:#cfd2d8;line-height:2.1;font-size:15px;margin-top:10px}
+.dec-single .dec-body{white-space:pre-wrap;font-size:17px;line-height:2.3}
+.issuer{display:flex;align-items:center;gap:12px;margin-top:16px;background:rgba(0,0,0,.5);border:1px solid #2a2a30;border-right:4px solid var(--red);padding:10px 14px;position:relative;z-index:1}
+.issuer img,.issuer .av-fb{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--bronze);flex-shrink:0}
+.issuer .av-fb{display:flex;align-items:center;justify-content:center;font-size:26px;background:#000}
+.issuer .who{display:flex;flex-direction:column;gap:3px}
+.seal{width:78px;height:78px;flex-shrink:0;border-radius:50%;margin-right:auto;position:relative;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 35%,#3a0d0d,#120304 70%);border:2px solid var(--red);box-shadow:0 0 22px rgba(232,0,0,.5),inset 0 0 14px #000;font-size:34px}
+.seal::before{content:'';position:absolute;inset:5px;border-radius:50%;border:1px dashed rgba(201,168,106,.7);animation:spin 12s linear infinite}
+.seal small{position:absolute;bottom:-9px;background:var(--red);color:#fff;font-size:9px;font-weight:800;padding:1px 10px;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);white-space:nowrap}
+@keyframes spin{to{transform:rotate(360deg)}}
+.dec-foot{margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;position:relative;z-index:1}
+.dec-img{width:100%;object-fit:cover;border:1px solid var(--bronze);margin-top:14px;display:block;position:relative;z-index:1}
+</style>
+</head>
+<body>
+<div class="grain"></div><canvas id="embers"></canvas>
+<div id="toasts"></div>
+<div class="strip">📣 بيانات رسمية من إدارة الصقر — أي كلام بره هنا مش معتمد</div>
+<nav><div class="nav-inner">
+<a class="brand" href="index.html"><img src="logo.png" alt="" onerror="this.outerHTML='<div class=brand-fb>🦅</div>'"><span><b>FALC<span>ON</span></b><small>BROTHERHOOD</small></span></a>
+<div class="links" style="display:flex"><a href="index.html">🌐 الرئيسية</a>
+<a href="index.html#market">🛒 السوق</a>
+<a href="news.html" class="active" style="color:var(--red)">📰 البيانات</a>
+<a href="rules.html">📜 القوانين</a>
+<a href="support.html">💰 الدعم</a>
+<a href="admin.html">🛡️ الإدارة</a>
+</div>
+</div></nav>
+
+<header class="news-hero">
+<div class="emblem" style="width:130px;height:130px;margin:0 auto 10px"><img src="logo.png" alt="" onerror="this.outerHTML='<div class=brand-fb style=&quot;width:130px;height:130px;font-size:60px;border-radius:50%&quot;>🦅</div>'"></div>
+<span class="tag">📰 المركز الإعلامي</span>
+<h1>بيانات <span>الصقر الرسمية</span></h1>
+<p class="sub" style="margin:8px auto 0">قرارات الحرب، التجنيد، والقوانين الجديدة — كل حاجة من الإدارة هنا وبس.</p>
+</header>
+
+<div class="wrap" style="padding:10px 20px 90px;position:relative;z-index:2">
+<div class="back-row">
+<div class="hint" id="newsCount"></div>
+<div style="display:flex;gap:8px">
+<a href="index.html" class="btn-ghost btn-sm">⬅ رجوع للرئيسية</a>
+<a href="admin.html" class="btn-ghost btn-sm" id="pubBtn" style="display:none">📣 نشر بيان (إدارة)</a>
+</div>
+</div>
+<!-- عرض بيان واحد -->
+<div id="singleView"></div>
+<!-- كل البيانات -->
+<div class="grid2" id="allNews" style="margin-top:16px"></div>
+</div>
+
+<footer>
+<div class="wrap">
+<div class="en" style="font-size:24px;letter-spacing:3px">FALC<span style="color:var(--red)">O</span>N BROTHERHOOD</div>
+<div style="color:#777;font-size:14px;margin-top:6px">FEAR THE SKY — Los Santos • FiveM RP</div>
+<div class="socials">
+<a class="invite-link" href="https://discord.gg/YbHbuY2QBx" target="_blank"><i class="fa-brands fa-discord"></i></a>
+<a href="index.html"><i class="fa-solid fa-house"></i></a>
+<a href="news.html"><i class="fa-solid fa-newspaper"></i></a>
+<a href="support.html"><i class="fa-solid fa-hand-holding-dollar"></i></a>
+</div>
+<div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:13px;margin-bottom:14px"><a href="index.html" style="color:#999">الرئيسية</a><a href="index.html#market" style="color:#999">السوق</a><a href="news.html" style="color:#999">البيانات</a><a href="rules.html" style="color:#999">القوانين</a><a href="support.html" style="color:#999">الدعم</a><a href="admin.html" style="color:#999">الإدارة</a></div>
+<div style="color:#555;font-size:13px">© 2026 FALCON BROTHERHOOD — اللي يسرق اسمنا هنزوره في بيته 😈</div>
+</div>
+</footer>
+
+
+<script>
+const $=s=>document.querySelector(s);
+const DB={get(k,f){try{const v=JSON.parse(localStorage.getItem(k));return v??f}catch{return f}}};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const RANKS=[{name:'زائر',icon:'👤'},{name:'مستجد',icon:'🩸'},{name:'مقاتل',icon:'🤜'},{name:'جندي',icon:'🔫'},{name:'قناص',icon:'🎯'},{name:'ظل',icon:'🗡️'},{name:'تاجر',icon:'💰'},{name:'قائد',icon:'🎖️'},{name:'حارس العش',icon:'🛡️'},{name:'الجناح الأيمن',icon:'⚔️'},{name:'الصقر',icon:'🦅'}];
+function rOf(rank){return RANKS[Math.min(10,rank||0)]||RANKS[0]}
+function authorRank(name){const u=DB.get('fb_users',[]).find(x=>x.name===name);const r=rOf(u?u.rank:7);return `<b style="color:#fff">${esc(name)}</b> <span class="badge ${u&&u.rank>=7?'red':'gold'}">${r.icon} ${r.name}</span>`}
+function authorAv(name){const u=DB.get('fb_users',[]).find(x=>x.name===name);return u&&u.avatar?`<img src="${u.avatar}" alt="">`:`<div class="av-fb">🦅</div>`}
+function issuerBox(n){return `<div class="issuer">${authorAv(n.author)}<div class="who"><div>👤 ${authorRank(n.author)}</div><small class="hint">📅 ${dFmt(n.date)} • رقم البيان ${serial(n)}</small></div><div class="seal">🦅<small>ختم معتمد</small></div></div>`}
+function serial(n){return '#'+String(n.id||'0').slice(-5).toUpperCase()}
+const dFmt=d=>{try{return new Date(d).toLocaleDateString('ar-EG',{year:'numeric',month:'long',day:'numeric'})}catch{return ''}};
+(function(){
+ if(!localStorage.getItem('fb_news'))DB.get('fb_news',[]);
+ const news=DB.get('fb_news',[]).slice().reverse();
+ const s=DB.get('fb_session',null);
+ const users=DB.get('fb_users',[]);
+ const admin=s&&users.some(u=>u.name===s.name&&u.rank>=3);
+ if(admin)$('#pubBtn').style.display='';
+ $('#newsCount').textContent=news.length?`📋 ${news.length} ${news.length===1?'بيان':'بيانات'} رسمية`:'';
+ const id=new URLSearchParams(location.search).get('id');
+ if(id){
+  const n=DB.get('fb_news',[]).find(x=>x.id===id);
+  if(n){
+   $('#singleView').innerHTML=`<div class="decree dec-single news-full">
+    <div class="dec-top"><span class="badge red">📜 مرسوم رسمي</span><span class="dec-no">FALCON • ${serial(n)}</span></div>
+    <div class="dec-title">${esc(n.title)}</div>
+    ${n.img?`<img src="${n.img}" class="dec-img" style="max-height:380px" alt="">`:''}
+    ${issuerBox(n)}
+    <div class="dec-body">${esc(n.body)}</div>
+    <div class="dec-foot"><span class="hint">صادر عن القيادة العليا — FALCON BROTHERHOOD 🦅</span><a href="news.html" class="btn-ghost btn-sm">📋 كل البيانات</a></div></div>`;
+   $('#allNews').innerHTML=news.filter(x=>x.id!==id).slice(0,4).map(card).join('');
+   return;
+  }
+ }
+ $('#allNews').innerHTML=news.map(card).join('')||`<div class="empty">مفيش بيانات لسه — الإدارة هتنشر أول بيان قريب 📣<br><br><a href="admin.html" class="btn-ghost btn-sm">دخول لوحة الإدارة 🛡️</a></div>`;
+ function card(n){
+  return `<div class="decree news-item" onclick="location.href='news.html?id=${n.id}'">
+   <div class="dec-top"><span class="badge red">📜 مرسوم رسمي</span><span class="dec-no">${serial(n)} • ${dFmt(n.date)}</span></div>
+   <div class="dec-title">${esc(n.title)}</div>
+   ${n.img?`<img src="${n.img}" class="dec-img" style="max-height:200px" alt="">`:''}
+   <div class="dec-body">${esc(String(n.body).slice(0,130))}${String(n.body).length>130?'...':''}</div>
+   ${issuerBox(n)}
+   <div class="dec-foot"><span style="color:var(--red);font-size:13px;font-weight:800">افتح المرسوم كامل ⬅</span></div></div>`;
+ }
+ // شرارات خفيفة
+ const cv=$('#embers');
+ if(cv){const ctx=cv.getContext('2d');let W,H;const rs=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight};rs();addEventListener('resize',rs);
+ const ps=Array.from({length:50},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:Math.random()*2+.5,v:Math.random()*.8+.2,o:Math.random()*.7+.2}));
+ (function loop(){ctx.clearRect(0,0,W,H);ps.forEach(a=>{a.y-=a.v;if(a.y<0){a.y=H;a.x=Math.random()*W}ctx.beginPath();ctx.arc(a.x,a.y,a.s,0,7);ctx.fillStyle=`rgba(232,0,0,${a.o*.6})`;ctx.fill()});requestAnimationFrame(loop)})();}
+})();
+</script>
+</body>
+</html>

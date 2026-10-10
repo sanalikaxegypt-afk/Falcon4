@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0505">
+<title>ادعم الصقر 💰 — FALCON BROTHERHOOD</title>
+<meta name="description" content="ادعم عصابة FALCON BROTHERHOOD مادياً وخلّد اسمك في حائط الداعمين">
+<link rel="icon" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cairo:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css?v=2">
+<style>
+.sup-hero{position:relative;z-index:2;text-align:center;padding:60px 20px 30px;background:linear-gradient(rgba(0,0,0,.7),rgba(8,8,10,.97)),url('https://k.top4top.io/p_3933u21fo1.jpg') center/cover}
+.sup-hero h1{font-size:clamp(32px,6vw,58px);font-weight:800}
+.sup-hero h1 span{color:var(--bronze)}
+.goal{max-width:800px;margin:24px auto 0;background:linear-gradient(180deg,#17171b,#0c0c0e);border:1px solid var(--bronze);padding:22px;text-align:center}
+.goal .big{font-family:'Anton';font-size:clamp(30px,5vw,46px);color:var(--bronze)}
+.goal-bar{height:14px;background:#1c1c20;border:1px solid #2c2c32;border-radius:99px;overflow:hidden;margin:14px 0 8px}
+.goal-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),var(--bronze));box-shadow:0 0 15px rgba(201,168,106,.7);transition:width .8s}
+.tier{display:inline-block;font-size:12px;font-weight:800;padding:4px 14px;border-radius:99px;border:1px solid;margin-top:6px}
+.t-bronze{color:#cd7f32;border-color:#cd7f32;background:rgba(205,127,50,.1)}
+.t-silver{color:#c0c0c0;border-color:#c0c0c0;background:rgba(192,192,192,.1)}
+.t-gold{color:var(--bronze);border-color:var(--bronze);background:rgba(201,168,106,.12)}
+.t-myth{color:#ff9090;border-color:var(--red);background:rgba(232,0,0,.12)}
+.donor{display:flex;align-items:center;gap:12px;background:#0b0b0d;border:1px solid #222228;padding:12px 16px;margin-top:8px}
+.donor .medal{font-size:28px}
+</style>
+</head>
+<body>
+<div class="grain"></div><canvas id="embers"></canvas>
+<div id="toasts"></div>
+<div class="strip">💰 كل دولار بيقوّي العش — الداعمين أسياد فوق الراس 👑</div>
+<nav><div class="nav-inner">
+<a class="brand" href="index.html"><img src="logo.png" alt="" onerror="this.outerHTML='<div class=brand-fb>🦅</div>'"><span><b>FALC<span>ON</span></b><small>BROTHERHOOD</small></span></a>
+<div class="links" style="display:flex"><a href="index.html">🌐 الرئيسية</a>
+<a href="index.html#market">🛒 السوق</a>
+<a href="news.html">📰 البيانات</a>
+<a href="rules.html">📜 القوانين</a>
+<a href="support.html" class="active" style="color:var(--bronze)">💰 الدعم</a>
+<a href="admin.html">🛡️ الإدارة</a>
+</div>
+</div></nav>
+
+<header class="sup-hero">
+<div class="emblem" style="width:130px;height:130px;margin:0 auto 10px"><img src="logo.png" alt="" onerror="this.outerHTML='<div class=brand-fb style=&quot;width:130px;height:130px;font-size:60px;border-radius:50%&quot;>🦅</div>'"></div>
+<span class="tag">💰 صندوق العصابة</span>
+<h1>ادعم <span>الصقر</span></h1>
+<p class="sub" style="margin:8px auto 0">حوّل على حساب العصابة في بنك اللعبة وسجّل دعمك هنا — فلوسك بتخش <b style="color:#fff">خزينة العصابة</b> واسمك بيتخلّد في حائط الداعمين + <b style="color:#fff">20 XP هدية</b> بعد تأكيد الإدارة.</p>
+<div class="goal">
+<div class="big">$<span id="g_total">0</span> / $<span id="g_goal">5000</span></div>
+<div class="goal-bar"><i id="g_fill"></i></div>
+<div class="hint" id="g_txt"></div>
+</div>
+</header>
+
+<div class="wrap" style="padding:10px 20px 90px;position:relative;z-index:2">
+<div class="grid2">
+<form class="box" id="donForm">
+<h3>💸 سجّل دعمك <span class="badge gold">أي مبلغ</span></h3>
+<div class="stat-row" style="border-right:4px solid var(--bronze)"><span>⏳ حالة الدعم</span><b id="cdTxt">...</b></div>
+<div class="r2"><div><label>اسمك داخل اللعبة (IC) *</label><input id="d_name" required placeholder="Adam Falcon"></div>
+<div><label>المبلغ ($) *</label><input id="d_amount" type="number" min="1" required placeholder="10000"></div></div>
+<div class="stat-row"><span>🏦 حوّل على حساب العصابة (Fleeca Bank)</span><b dir="ltr" id="bankTxt" style="color:var(--bronze)">...</b></div>
+<div><label>رسالة للعصابة (اختياري)</label><textarea id="d_msg" rows="2" placeholder="كلمة حلوة تتكتب جنب اسمك..."></textarea></div>
+<button class="btn btn-red btn-sm" style="justify-content:center" type="submit">تأكيد الدعم 💰</button>
+<div class="hint">📌 حوّل المبلغ داخل اللعبة على حساب العصابة وبعدين سجّل دعمك هنا — الإدارة بتتأكد من التحويل وينزل اسمك في الحائط + تاخد 20 XP لو عندك حساب بنفس الاسم.</div>
+</form>
+<div class="card"><h3>👑 حائط الداعمين (الأعلى دعماً)</h3><div id="wall"></div>
+<div class="meta">🥉 برونزي $50+ • 🥈 فضي $200+ • 🥇 دهبي $500+ • 👑 أسطوري $1000+</div></div>
+</div>
+<div class="card" style="margin-top:16px"><h3>🕒 آخر الدعومات المؤكدة</h3><div id="recent"></div></div>
+</div>
+
+<footer>
+<div class="wrap">
+<div class="en" style="font-size:24px;letter-spacing:3px">FALC<span style="color:var(--red)">O</span>N BROTHERHOOD</div>
+<div style="color:#777;font-size:14px;margin-top:6px">FEAR THE SKY — Los Santos • FiveM RP</div>
+<div class="socials">
+<a class="invite-link" href="https://discord.gg/YbHbuY2QBx" target="_blank"><i class="fa-brands fa-discord"></i></a>
+<a href="index.html"><i class="fa-solid fa-house"></i></a>
+<a href="news.html"><i class="fa-solid fa-newspaper"></i></a>
+<a href="support.html"><i class="fa-solid fa-hand-holding-dollar"></i></a>
+</div>
+<div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:13px;margin-bottom:14px"><a href="index.html" style="color:#999">الرئيسية</a><a href="index.html#market" style="color:#999">السوق</a><a href="news.html" style="color:#999">البيانات</a><a href="rules.html" style="color:#999">القوانين</a><a href="support.html" style="color:#999">الدعم</a><a href="admin.html" style="color:#999">الإدارة</a></div>
+<div style="color:#555;font-size:13px">© 2026 FALCON BROTHERHOOD — اللي يسرق اسمنا هنزوره في بيته 😈</div>
+</div>
+</footer>
+
+
+<script>
+const $=s=>document.querySelector(s);
+const DB={get(k,f){try{const v=JSON.parse(localStorage.getItem(k));return v??f}catch{return f}},set(k,v){localStorage.setItem(k,JSON.stringify(v))}};
+const NEWS_WH='https://discord.com/api/webhooks/1557726226922340412/E2xEDeyPAuCgs2QYNfUoS_3b3eb9nbTtoKIp_hTDbPzCDhru9U1Ozgln5mrdG-6hhTnt';
+const SUPPORT_WH='https://discord.com/api/webhooks/1557726874803765338/XzgBjl1fTeOGqU_3CbJb5wmAEiu8zzIgHznG4wjr7Gfn8h_hO7V2WYaZwpKWygfx-nQ6';
+function cfg(){return Object.assign({webhook:NEWS_WH,supportWebhook:SUPPORT_WH,goal:5000,bank:'FLCN-001',ping:true,donCooldownH:5},DB.get('fb_config',{}))}
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Math.random().toString(36).slice(2,9)+Date.now().toString(36).slice(-3);
+function toast(m,t=''){const d=document.createElement('div');d.className='toast '+t;d.textContent=m;$('#toasts').appendChild(d);setTimeout(()=>d.remove(),3200)}
+function tier(total){if(total>=1000)return['👑 أسطوري','t-myth'];if(total>=500)return['🥇 دهبي','t-gold'];if(total>=200)return['🥈 فضي','t-silver'];if(total>=50)return['🥉 برونزي','t-bronze'];return['🤝 داعم','']}
+/* ⏳ تايمر الانتظار بين الدعم والتاني */
+const HOUR=3600*1000;
+function cdMs(){return (cfg().donCooldownH||5)*HOUR}
+function cdKey(n){return 'fb_don_cd_'+String(n||'').trim().toLowerCase()}
+function cdName(){return $('#d_name').value.trim()||((DB.get('fb_session',null)||{}).name||'')}
+function cdLeft(){const n=cdName();if(!n)return 0;return Math.max(0,DB.get(cdKey(n),0)+cdMs()-Date.now())}
+function fmtT(ms){const s=Math.floor(ms/1000);return String(Math.floor(s/3600)).padStart(2,'0')+':'+String(Math.floor(s%3600/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+function tickCd(){const l=cdLeft();const btn=document.querySelector('#donForm button[type=submit]');
+ if(l>0){$('#cdTxt').textContent='⏳ الدعم الجاي بعد '+fmtT(l);if(btn){btn.disabled=true;btn.style.opacity=.5;btn.style.pointerEvents='none'}}
+ else{$('#cdTxt').textContent='✅ تقدر تدعم دلوقتي';if(btn){btn.disabled=false;btn.style.opacity=1;btn.style.pointerEvents=''}}}
+function render(){
+ if(!localStorage.getItem('fb_donations'))DB.set('fb_donations',[]);
+ const all=DB.get('fb_donations',[]);
+ const ok=all.filter(d=>d.status==='ok');
+ const total=ok.reduce((s,d)=>s+(+d.amount||0),0);
+ const goal=cfg().goal||5000;
+ $('#g_total').textContent=total.toLocaleString('ar-EG');
+ $('#g_goal').textContent=goal.toLocaleString('ar-EG');
+ $('#g_fill').style.width=Math.min(100,Math.round(total/goal*100))+'%';
+ const names=[...new Set(ok.map(d=>d.name))];
+ $('#g_txt').textContent=`تم جمع ${Math.min(100,Math.round(total/goal*100))}% من الهدف — ${names.length} داعم مؤكد`;
+ $('#bankTxt').textContent=cfg().bank||'FLCN-001';
+ // الحائط: تجميع حسب الاسم
+ const agg={};ok.forEach(d=>{agg[d.name]=(agg[d.name]||0)+(+d.amount||0)});
+ const top=Object.entries(agg).sort((a,b)=>b[1]-a[1]).slice(0,8);
+ $('#wall').innerHTML=top.map(([n,t],i)=>{const[tt,cc]=tier(t);return `<div class="donor"><span class="medal">${i===0?'👑':i===1?'🥇':i===2?'🥈':'🎖️'}</span><div style="flex:1"><b>${esc(n)}</b><br><span class="tier ${cc}">${tt}</span></div><b style="color:var(--bronze)">$${t.toLocaleString('ar-EG')}</b></div>`}).join('')||'<div class="empty">لسه مفيش داعمين مؤكدين — كن أول أسطورة 👑</div>';
+ $('#recent').innerHTML=ok.slice(-6).reverse().map(d=>`<div class="stat-row"><span>💰 <b>${esc(d.name)}</b> دعم <b style="color:var(--bronze)">$${(+d.amount).toLocaleString('ar-EG')}</b>${d.msg?`<br><span class="hint">“${esc(d.msg)}”</span>`:''}</span><span class="badge green">مؤكد ✓</span></div>`).join('')||'<div class="empty">مفيش دعومات مؤكدة لسه</div>';
+ // تعبئة الاسم من الحساب
+ const s=DB.get('fb_session',null);
+ if(s&&!$('#d_name').value)$('#d_name').value=s.name;
+ tickCd();
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ render();
+ setInterval(tickCd,1000);
+ $('#d_name').addEventListener('input',tickCd);
+ $('#donForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const name=$('#d_name').value.trim(),amount=+$('#d_amount').value,msg=$('#d_msg').value.trim();
+  if(name.length<2){toast('اكتب اسمك داخل اللعبة','err');return}
+  if(!amount||amount<1){toast('اكتب مبلغ صحيح','err');return}
+  const wait=cdLeft();
+  if(wait>0){toast('⏳ استنى '+fmtT(wait)+' قبل الدعم الجاي','err');return}
+  const all=DB.get('fb_donations',[]);
+  all.push({id:uid(),name,amount,msg,status:'pending',date:new Date().toISOString()});
+  DB.set('fb_donations',all);
+  DB.set(cdKey(name),Date.now()); // بدء فترة الانتظار
+  fetch(cfg().supportWebhook||SUPPORT_WH,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content:(cfg().ping===false?'':'@everyone\n')+`💰 دعم جديد لخزينة العصابة (مستني التأكيد):\n👤 الاسم (IC): **${name}**\n💵 المبلغ: **$${amount}**\n✉️ رسالة: ${msg||'—'}`,allowed_mentions:{parse:['everyone']}})}).catch(()=>{});
+  e.target.reset();toast('وصل دعمك — الإدارة هتأكده وينزل اسمك في الحائط 👑','ok');render();
+ });
+ const cv=$('#embers');
+ if(cv){const ctx=cv.getContext('2d');let W,H;const rs=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight};rs();addEventListener('resize',rs);
+ const ps=Array.from({length:50},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:Math.random()*2+.5,v:Math.random()*.8+.2,o:Math.random()*.7+.2}));
+ (function loop(){ctx.clearRect(0,0,W,H);ps.forEach(a=>{a.y-=a.v;if(a.y<0){a.y=H;a.x=Math.random()*W}ctx.beginPath();ctx.arc(a.x,a.y,a.s,0,7);ctx.fillStyle=`rgba(201,168,106,${a.o*.6})`;ctx.fill()});requestAnimationFrame(loop)})();}
+});
+</script>
+</body>
+</html>
